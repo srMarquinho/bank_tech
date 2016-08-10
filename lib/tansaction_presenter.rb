@@ -1,4 +1,11 @@
-# class Printer
+# class TransactionPresenter
+#
+#   attr_reader :transactions, :balance
+#
+#   def initialize
+#     @transactions = {}
+#     @balance = 0
+#   end
 #
 #   def stringify_transactions(dates, credits, debits, balance)
 #     "#{dates} || #{credits} || #{debits} || #{balance}\n"
