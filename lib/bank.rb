@@ -1,5 +1,7 @@
 class Bank
 
+  attr_reader :credit, :debit, :balance
+
   def initialize
     @date = []
     @credit = []
