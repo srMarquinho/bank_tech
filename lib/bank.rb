@@ -1,39 +1,40 @@
 class Bank
 
-  attr_reader :inputs
+  attr_reader :transactions, :balance
 
   def initialize
-    @inputs = {}
+    @transactions = {}
     @balance = 0
   end
 
   def deposit(date, amount)
-    @inputs.merge! date => amount
+    @transactions.merge! date => amount
   end
 
-  def withdraw (date, amount)
-    @inputs.merge! date => -amount
+  def withdraw(date, amount)
+    @transactions.merge! date => -amount
   end
 
-  def stringify_inputs(dates="", credits="", debits="", balance)
+  def stringify_transactions(dates, credits, debits, balance)
     "#{dates} || #{credits} || #{debits} || #{balance}\n"
   end
 
-  def print_inputs
+  def format_transactions
     result = []
-    @inputs.each do |date, amount|
+    @transactions.each do |date, amount|
       if amount < 0
         @balance += amount
-        result << stringify_inputs(date, "", amount.abs, @balance)
+        result << stringify_transactions(date, "", amount.abs, @balance)
       else
         @balance += amount
-        result << stringify_inputs(date, amount, "", @balance)
+        result << stringify_transactions(date, amount, "", @balance)
       end
     end
     result.reverse.join
   end
 
-  def printer
-    "date || credit || debit || balance\n" + print_inputs
+  def print_statement
+    "date || credit || debit || balance\n" + format_transactions
   end
+
 end
