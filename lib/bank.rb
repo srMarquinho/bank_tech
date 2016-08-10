@@ -1,24 +1,18 @@
 class Bank
 
-  attr_reader :credit, :debit, :balance
+  attr_reader :credit, :debit
 
   def initialize
-    @date = []
     @credit = []
     @debit = []
-    @balance = []
   end
 
-  # def date(date)
-  #   @date << date
-  # end
-
-  def deposit(amount)
-    @credit << amount
+  def deposit(date, amount)
+    @credit << { date => amount }
   end
 
-  def withdraw(amount)
-    @debit << amount
+  def withdraw(date, amount)
+    @debit << { date => amount }
   end
 
   def print

@@ -2,39 +2,26 @@ require "bank"
 
 describe Bank do
 
-  subject(:bank) {described_class.new}
+  subject(:bank) { described_class.new }
 
-  let(:amount) {double(99.99)}
-
-  # it "#date" do
-  #
-  # end
+  let(:amount) { double 99.99 }
+  let(:date) { double "01/01/1001" }
 
   describe "#deposit" do
-    it "can make a deposit" do
-      deposit = bank.deposit amount
-      expect(deposit).to eq [amount]
-    end
-
-    it "can store a deposit" do
-      bank.deposit amount
-      expect(bank.credit). to eq [amount]
+    it "can store date and amount as hash" do
+      bank.deposit date, amount
+      expect(bank.credit).to eq [{ date => amount}]
     end
   end
 
   describe "#withdraw" do
-    it "can make a withdraw" do
-      deposit = bank.deposit amount
-      expect(deposit).to eq [amount]
-    end
-
-    it "can store a withdraw" do
-      bank.withdraw amount
-      expect(bank.debit). to eq [amount]
+    it "can store date and amount as hash" do
+      bank.withdraw date, amount
+      expect(bank.debit).to eq [{ date => amount}]
     end
   end
 
-  it "#print" do
-
-  end
+  # describe "#print" do
+  #
+  # end
 end
